@@ -16,6 +16,6 @@ describe Sudoku do
   end
 
   it '#grid returns a selected grid' do
-    expect(game.grid(4)).to eq(["-", "-", "7","-", "8", "3","-", "6", "1"])
+    expect(game.grid(4,5)).to eq(["-", "-", "7","-", "8", "3","-", "6", "1"])
   end
 end
