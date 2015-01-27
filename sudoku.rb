@@ -1,4 +1,6 @@
 class Sudoku
+  attr_reader :board
+
   def initialize(board)
     @board = board_to_array(board)
   end
