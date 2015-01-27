@@ -6,6 +6,22 @@ class Sudoku
     @board = board_to_array(board)
   end
 
+  def guess
+    board.each_with_index do |row, row_i|
+      row.each_with_index do |col, col_i|
+        if blank?(col)
+          p
+          @board[row_i][col_i] = possibilities(row_i,col_i).first
+          return
+        end
+      end
+    end
+  end
+
+  def blank?(cell)
+    cell == "-"
+  end
+
   def board_to_array(board)
     first_layer = board.split("")
     Array.new (9) { first_layer.shift(9) }
