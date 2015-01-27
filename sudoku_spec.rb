@@ -1,3 +1,4 @@
+require_relative "sudoku"
 
 describe Sudoku do
   it 'fails a false test' do
