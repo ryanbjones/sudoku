@@ -17,4 +17,16 @@ class Sudoku
   def column(col)
     @board.transpose[col]
   end
+
+  def grid(row, col)
+    sets = [[0,1,2],[3,4,5],[6,7,8]]
+    row_set = sets.select {|set| set.include?(row)}[0]
+    col_set = sets.select {|set| set.include?(col)}[0]
+    row_set.map do |row|
+      col_set.map do |col|
+        @board[row][col]
+      end
+    end.flatten
+  end
+
 end
