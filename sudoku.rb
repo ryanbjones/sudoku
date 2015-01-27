@@ -23,25 +23,25 @@ class Sudoku
   end
 
   def board_to_array(board)
-    first_layer = board.split("")
-    Array.new (9) { first_layer.shift(9) }
+    single_array = board.split("")
+    Array.new (9) { single_array.shift(9) }
   end
 
-  def row(row)
-    @board[row]
+  def get_row(row)
+    board[row]
   end
 
-  def column(col)
-    @board.transpose[col]
+  def get_column(col)
+    board.transpose[col]
   end
 
-  def grid(row, col)
+  def get_grid(row, col)
     sets = [[0,1,2],[3,4,5],[6,7,8]]
-    row_set = sets.select {|set| set.include?(row)}[0]
-    col_set = sets.select {|set| set.include?(col)}[0]
+    row_set = sets.select {|set| set.include?(row)}.flatten
+    col_set = sets.select {|set| set.include?(col)}.flatten
     row_set.map do |row|
       col_set.map do |col|
-        @board[row][col]
+        board[row][col]
       end
     end.flatten
   end
