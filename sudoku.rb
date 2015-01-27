@@ -1,5 +1,6 @@
 class Sudoku
   attr_reader :board
+  COMPLETE_SET = ["1","2","3","4","5","6","7","8","9"]
 
   def initialize(board)
     @board = board_to_array(board)
