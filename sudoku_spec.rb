@@ -7,11 +7,15 @@ describe Sudoku do
     expect(game.board).to eq([["1", "-", "5", "8", "-", "2", "-", "-", "-"], ["-", "9", "-", "-", "7", "6", "4", "-", "5"], ["2", "-", "-", "4", "-", "-", "8", "1", "9"], ["-", "1", "9", "-", "-", "7", "3", "-", "6"], ["7", "6", "2", "-", "8", "3", "-", "9", "-"], ["-", "-", "-", "-", "6", "1", "-", "5", "-"], ["-", "-", "7", "6", "-", "-", "-", "3", "-"], ["4", "3", "-", "-", "2", "-", "5", "-", "1"], ["6", "-", "-", "3", "-", "8", "9", "-", "-"]])
   end
 
-  it 'returns a row selected' do
+  it '#row returns a row selected' do
     expect(game.row(2)).to eq(["2", "-", "-", "4", "-", "-", "8", "1", "9"])
   end
 
-  it 'returns a selected column' do
+  it '#column returns a selected column' do
     expect(game.column(3)).to eq(["8","-","4","-","-","-","6","-","3"])
+  end
+
+  it '#grid returns a selected grid' do
+    expect(game.grid(4)).to eq(["-", "-", "7","-", "8", "3","-", "6", "1"])
   end
 end
