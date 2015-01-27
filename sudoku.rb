@@ -2,4 +2,9 @@ class Sudoku
   def initialize(board)
     @board = board_to_array(board)
   end
+
+  def board_to_array(board)
+    first_layer = board.split("")
+    Array.new (9) { first_layer.shift(9) }
+  end
 end
