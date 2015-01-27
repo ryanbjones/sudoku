@@ -13,4 +13,8 @@ class Sudoku
   def row(row)
     @board[row]
   end
+
+  def column(col)
+    @board.transpose[col]
+  end
 end
