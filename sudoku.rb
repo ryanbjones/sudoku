@@ -9,4 +9,8 @@ class Sudoku
     first_layer = board.split("")
     Array.new (9) { first_layer.shift(9) }
   end
+
+  def row(row)
+    @board[row]
+  end
 end
