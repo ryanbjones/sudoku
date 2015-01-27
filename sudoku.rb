@@ -30,4 +30,9 @@ class Sudoku
     end.flatten
   end
 
+  def possibilities(row,col)
+    used_numbers = get_row(row) + get_column(col) + get_grid(row, col) - ["-"]
+    COMPLETE_SET  - used_numbers
+  end
+
 end
