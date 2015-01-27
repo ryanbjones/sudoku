@@ -28,4 +28,8 @@ describe Sudoku do
   it '#grid returns a selected grid' do
     expect(game.grid(4,5)).to eq(["-", "-", "7","-", "8", "3","-", "6", "1"])
   end
+
+  it 'returns a list of possible numbers for a given cell' do
+    expect(game.possiblities(2,8)).to eq([1])
+  end
 end
