@@ -30,11 +30,12 @@ class Sudoku
       row.each_with_index do |col, col_i|
         if blank?(col)
           possibility_set = possibilities(row_i,col_i)
+          return [] if possibility_set.size == 0
           options.push([possibility_set.size, [row_i,col_i], possibility_set])
         end
       end
     end
-    options.sort
+    options.sort.first[1..2]
   end
 
   def solved?
