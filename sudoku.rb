@@ -16,6 +16,34 @@ class Sudoku
         end
       end
     end
+
+  def solved?
+    !@board.flatten.include?("-")
+  end
+
+  def valid_board?
+    0.upto(8) do |i|
+      return false unless valid_row?(i)
+      return false unless valid_col?(i)
+    end
+    0.upto(2) do |r|
+      0.upto(2) do |c|
+        return false unless valid_grid?(r,c*3)
+      end
+    end
+    true
+  end
+
+  def valid_row?(i)
+    get_row(i).uniq - ["-"] == get_row(i) - ["-"]
+  end
+
+  def valid_col?(i)
+    get_column(i).uniq - ["-"] == get_column(i) - ["-"]
+  end
+
+  def valid_grid?(r,c)
+    get_grid(r,c).uniq - ["-"] == get_grid(r,c) - ["-"]
   end
 
   def blank?(cell)
