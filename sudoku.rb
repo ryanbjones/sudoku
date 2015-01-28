@@ -1,12 +1,32 @@
+require 'pry'
+require 'debugger'
+
 class Sudoku
-  attr_reader :board
+  attr_accessor :board
   COMPLETE_SET = ["1","2","3","4","5","6","7","8","9"]
 
   def initialize(board)
     @board = board_to_array(board)
   end
 
-  def guess
+  def solve!
+    guess(get_blanks_with_possibilities)
+  end
+
+  def guess(options)
+    return false unless valid_board?
+    return @board if solved?
+    options.each do |length, coordinates, possibility_set|
+      possibility_set.each do |possibility|
+        debugger
+        board[coordinates[0]][coordinates[1]] = possibility
+        solved_board = Sudoku.new(@board.flatten.join).solve!
+        return solved_board if solved_board
+      end
+    end
+    false
+  end
+
   def get_blanks_with_possibilities
     options = []
     board.each_with_index do |row, row_i|
