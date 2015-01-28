@@ -7,15 +7,18 @@ class Sudoku
   end
 
   def guess
+  def get_blanks_with_possibilities
+    options = []
     board.each_with_index do |row, row_i|
       row.each_with_index do |col, col_i|
         if blank?(col)
-          p
-          @board[row_i][col_i] = possibilities(row_i,col_i).first
-          return
+          possibility_set = possibilities(row_i,col_i)
+          options.push([possibility_set.size, [row_i,col_i], possibility_set])
         end
       end
     end
+    options.sort
+  end
 
   def solved?
     !@board.flatten.include?("-")
