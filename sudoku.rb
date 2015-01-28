@@ -99,9 +99,22 @@ class Sudoku
     end.flatten
   end
 
+  def display_board
+    print "\e[2J"
+    print "\e[H"
+    puts self
+    sleep 0.1
+  end
+
   def possibilities(row,col)
     used_numbers = get_row(row) + get_column(col) + get_grid(row, col) - ["-"]
     COMPLETE_SET  - used_numbers
+  end
+
+  def to_s
+    @board.each do |row|
+      puts row.join(" ")
+    end
   end
 
 end
