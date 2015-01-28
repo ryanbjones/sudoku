@@ -7,24 +7,21 @@ class Sudoku
 
   def initialize(board)
     @board = board_to_array(board)
+    @@iteration += 1
   end
 
   def solve!
-    guess(get_blanks_with_possibilities)
-  end
-
-  def guess(options)
     return false unless valid_board?
     return @board if solved?
-    options.each do |length, coordinates, possibility_set|
-      possibility_set.each do |possibility|
-        debugger
-        board[coordinates[0]][coordinates[1]] = possibility
-        solved_board = Sudoku.new(@board.flatten.join).solve!
-        return solved_board if solved_board
-      end
+    coords, options = get_blanks_with_possibilities
+    return false if options.nil?
+    options.each do |possibility|
+      display_board
+      board[coords[0]][coords[1]] = possibility
+      solved_board = Sudoku.new(@board.flatten.join).solve!
+      return solved_board if solved_board
     end
-    false
+    return false
   end
 
   def get_blanks_with_possibilities
