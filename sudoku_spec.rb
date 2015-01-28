@@ -33,7 +33,7 @@ describe Sudoku do
     expect(game.possibilities(8,2)).to eq(["1"])
   end
 
-  it 'placs a guess in an empty cell' do
+  it 'places a guess in an empty cell' do
     game.guess
     expect(game.board).to eq([
       ["1", "4", "5", "8", "-", "2", "-", "-", "-"],
@@ -46,5 +46,10 @@ describe Sudoku do
       ["4", "3", "-", "-", "2", "-", "5", "-", "1"],
       ["6", "-", "-", "3", "-", "8", "9", "-", "-"]
     ])
+  end
+
+  it 'returns true if the board is valid' do
+    game.board[0][1] = "5"
+    expect(game.valid_board?).to eq(false)
   end
 end
