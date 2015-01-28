@@ -42,6 +42,10 @@ class Sudoku
     !@board.flatten.include?("-")
   end
 
+  def invalid_board?
+    !valid_board?
+  end
+
   def valid_board?
     0.upto(8) do |i|
       return false unless valid_row?(i)
