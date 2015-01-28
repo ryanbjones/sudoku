@@ -48,8 +48,23 @@ describe Sudoku do
     ])
   end
 
-  it 'returns true if the board is valid' do
+  it 'returns false if the board is invalid' do
     game.board[0][1] = "5"
     expect(game.valid_board?).to eq(false)
+  end
+
+  it 'returns false if a row is invalid' do
+    game.board[0][1] = "5"
+    expect(game.valid_row?(0)).to eq(false)
+  end
+
+  it 'returns false if a column is invalid' do
+    game.board[0][1] = "9"
+    expect(game.valid_col?(1)).to eq(false)
+  end
+
+  it 'returns false if a grid is invalid' do
+    game.board[0][1] = "2"
+    expect(game.valid_grid?(0,0)).to eq(false)
   end
 end
