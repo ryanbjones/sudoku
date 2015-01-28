@@ -7,7 +7,6 @@ class Sudoku
 
   def initialize(board)
     @board = board_to_array(board)
-    @@iteration += 1
   end
 
   def solve!
@@ -112,9 +111,7 @@ class Sudoku
   end
 
   def to_s
-    @board.each do |row|
-      puts row.join(" ")
-    end
+    @board.map { |row| row.join(" ") }.join("\n")
   end
 
 end
